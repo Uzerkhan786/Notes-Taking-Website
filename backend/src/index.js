@@ -3,12 +3,25 @@ const bodyParser=require('body-parser');
 const cors=require('cors');
 const mongoDBconnection=require('./config/db')
 const router=require('./routes/index')
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
+const demo=require('./models/demo')
 const app=express();
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended:true}));
+app.use('/uploads',express.static('uploads'))
 app.use(bodyParser.json());
-app.use(cors());
 
+
+
+app.post('/',async(req,res)=>{
+    const newuser=await demo.create(req.body)
+   
+   res.json({
+    data:newuser
+   })
+})
+app.use(cors());
 app.use('/api',router);
 
 app.listen('5000',async(req,res)=>{
