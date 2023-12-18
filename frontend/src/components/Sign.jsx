@@ -11,7 +11,7 @@ const Sign = () => {
     const click=async(e)=>{
         e.preventDefault();
         console.log(login.name,login.password);
-        const response=await fetch('http://localhost:5000/api/v1/loginuser',{
+        const response=await fetch('https://notetaking-iu1x.onrender.com/api/v1/loginuser',{
             method: "POST",
             body: JSON.stringify({
                 name:login.name,
@@ -27,14 +27,11 @@ const Sign = () => {
           return console.log('username or password is incorrect');
         }
         
-          navigate('/Home')
+          
           //console.log(json.data.notes[0]);
           console.log(json.data._id);
           localStorage.setItem('userId',json.data._id);
-        
-        
-         
-            
+          navigate('/Home')          
     }
     const onchange=(e)=>{
         setLogin({...login,[e.target.name]:e.target.value})

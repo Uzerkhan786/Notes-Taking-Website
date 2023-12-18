@@ -12,7 +12,7 @@ const AddNote = () => {
   })
   const click=(e)=>{
     e.preventDefault();
-    fetch('http://localhost:5000/api/v1/create',{
+    fetch('https://notetaking-iu1x.onrender.com/api/v1/create',{
             method: "POST",
             body: JSON.stringify({
                 title:note.title,
@@ -30,10 +30,12 @@ const AddNote = () => {
   }
   useEffect(()=>{
     let c=localStorage.getItem('userId')
-    fetch(`http://localhost:5000/api/v1/getall?user=${c}`)
+    console.log(c);
+    fetch(`https://notetaking-iu1x.onrender.com/api/v1/getall?user=${c}`)
     .then(data=>data.json())
     .then(json=>{
-      setAllNotes(json.data)
+      setAllNotes(json.data);
+      console.log(allNote);
     })
   } ,[]);
 
@@ -61,7 +63,7 @@ const AddNote = () => {
         <form onSubmit={click}>
 
   <div className="form-group my-3 py-2">
-  <label htmlFor="text" className='my-1'><h5>Title</h5> </label> 
+  <label htmlFor="text" className='my-1'><h5><i class="fa-regular fa-pen-to-square"></i> Title</h5> </label> 
       <input type="text" className="form-control" id="title"
         name='title' onChange={onchange} placeholder="add title"/>
   </div>
@@ -72,7 +74,7 @@ const AddNote = () => {
         name='des' onChange={onchange} placeholder="add desc"/>
    </div>
     <div className='my-4'>
-      <button type="submit" className="btn btn-danger">Add Notes</button>
+      <button type="submit" className="btn btn-danger"><i class="fa-solid fa-plus"></i> Save</button>
     </div>
   
 </form>
@@ -81,21 +83,19 @@ const AddNote = () => {
 <h2>All Notes</h2>
 <div class="row">
 {allNote.map(val=>{
-     return  <div className=' col-4 my-3'>
-    <div className="card"  >
-    
-<div className="card-body">
-  <div className=""> 
-  </div>
+     return  <div className=' col-lg-4 col-md-12 my-3'>
+    <div className="card project-card-view "  >
+
+  
   <div className="card-body">
-  <h3 className="card-title">{val.title}</h3>
-    <p>{val.des}</p>
-    <h6>Date: {val.date.substring(0,10)}</h6>
-    <p><MdOutlineAccessTimeFilled />{val.date.substring(11,val.date.length)}</p>
-    <button  type='submit' value={val._id} onClick={deleteButton} className="btn btn-danger"><MdDelete />nknkk</button>
+  <h3 className="card-title"><i class="fa-solid fa-clipboard"></i> {val.title}</h3>
+    <p><i class="fa-regular fa-pen-to-square"></i> {val.des}</p>
+    <h6 ><i class="fa-solid fa-calendar-days"></i> {val.date.substring(0,10)}</h6>
+    <p><i class="fa-regular fa-clock"></i> { val.date.substring(11,val.date.length)}</p>
+    <button  type='submit' value={val._id} onClick={deleteButton} className="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
    {/* <button type='submit' value={val._id}onClick={deleteButton}></button>  */}
   </div>
-</div>
+
 </div>
   </div>
   })}

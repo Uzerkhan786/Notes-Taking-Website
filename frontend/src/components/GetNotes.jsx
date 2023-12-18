@@ -13,10 +13,11 @@ const GetNotes = () => {
  
  
   useEffect(()=>{
-    fetch('http://localhost:5000/api/v1/getall')
+    fetch('https://notetaking-iu1x.onrender.com/api/v1/getall')
     .then(data=>data.json())
     .then(json=>{
-      setAllNotes(json.data)
+      setAllNotes(json.data);
+      console.log(allNote);
     })
   } ,[]);
   return (

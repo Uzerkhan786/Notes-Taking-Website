@@ -11,7 +11,7 @@ const Signup = () => {
     const click=async(e)=>{
         e.preventDefault();
         console.log(login.name,login.password);
-        const response=await fetch('http://localhost:5000/api/v1/createuser',{
+        const response=await fetch('https://notetaking-iu1x.onrender.com/api/v1/createuser',{
             method: "POST",
             body: JSON.stringify({
                 name:login.name,

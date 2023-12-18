@@ -9,7 +9,7 @@ const Navbar = () => {
       title:''
      })
      useEffect(()=>{
-      fetch(`http://localhost:5000/api/v1/getall`)
+      fetch(`https://notetaking-iu1x.onrender.com/api/v1/getall`)
     .then(data=>data.json())
     .then(json=>{
       //console.log(json.data)
@@ -32,15 +32,16 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
-  <Link className="navbar-brand" to="/">Notes</Link>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="container-fluid">
+  <Link className="navbar-brand" to="/"><i class="fa-solid fa-pen"></i> Notes</Link>
+  <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
-
+  
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul className="navbar-nav mr-auto">
+  <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
       <li className="nav-item active">
-      <Link class="nav-link a" aria-current="page" to="/Home">Home</Link>
+      <Link class="nav-link a" aria-current="page" to="/Home"><i class="fa-solid fa-house"></i> Home</Link>
       </li>  
    </ul>
 
@@ -59,6 +60,7 @@ const Navbar = () => {
       </li>  
    </ul>
 
+  </div>
   </div>
 </nav>
     </div>
