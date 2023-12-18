@@ -2,6 +2,8 @@ const express=require('express');
 const bodyParser=require('body-parser');
 const cors=require('cors');
 const mongoDBconnection=require('./config/db')
+const{PORT,MONGO_DB_URI}=require('./config/config-env')
+
 const router=require('./routes/index')
 const multer  = require('multer')
 const upload = multer({ dest: 'uploads/' })
@@ -24,9 +26,10 @@ app.post('/',async(req,res)=>{
 app.use(cors());
 app.use('/api',router);
 
-app.listen('5000',async(req,res)=>{
+app.listen(PORT,async(req,res)=>{
     await mongoDBconnection();
-    console.log('Server is listening at 5000');
+    console.log(index);
+    console.log('Server is listening at '+PORT);
 })
 
 
