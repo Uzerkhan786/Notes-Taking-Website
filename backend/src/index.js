@@ -28,7 +28,6 @@ app.use('/api',router);
 
 app.listen(PORT,async(req,res)=>{
     await mongoDBconnection();
-    console.log(index);
     console.log('Server is listening at '+PORT);
 })
 
