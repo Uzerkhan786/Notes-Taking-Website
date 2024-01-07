@@ -39,10 +39,10 @@ const Sign = () => {
   return (
     <div className='container' style={{width:'400px'}}>
      <h2>Signin</h2>
-     <form onSubmit={click}>
+     <form autoComplete='off'  onSubmit={click}>
      <div className="form-group my-3 py-2">
      <label htmlFor="text " className='my-1'><h5>Username</h5> </label> 
-      <input type="text" className="form-control" id="username"
+      <input type="text" className="form-control" id="username" autoComplete='off'
         name='name' onChange={onchange} placeholder="username"/>
 
 

@@ -1,8 +1,6 @@
 import React, { useState ,useEffect} from 'react'
 import {getTask, getTaskDelete} from './API/getTaskApi'
 
-import { MdDelete ,MdOutlineAccessTimeFilled} from "react-icons/md";
-
 const AddNote = () => {
   const [allNote,setAllNotes]=useState([]);
   const [deleteNote,setdeleteNote]=useState(0);
@@ -93,6 +91,7 @@ const AddNote = () => {
     <h6 ><i class="fa-solid fa-calendar-days"></i> {val.date.substring(0,10)}</h6>
     <p><i class="fa-regular fa-clock"></i> { val.date.substring(11,val.date.length)}</p>
     <button  type='submit' value={val._id} onClick={deleteButton} className="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
+    
    {/* <button type='submit' value={val._id}onClick={deleteButton}></button>  */}
   </div>
 
